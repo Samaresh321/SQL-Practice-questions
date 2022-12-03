@@ -42,6 +42,17 @@ inner join
 department d ON tmp.dept_id=d.dept_id;
 
 
+--- Write a Query to generate numbers from 1 to 10 in SQL
+ 
+with recursive generate_number as(
+    SELECT 1 as n 
+    UNION
+    SELECT n+1 FROM generate_number where n<10
+)
+
+SELECT * FROM generate_number;
+
+
 
 
 
