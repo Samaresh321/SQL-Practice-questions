@@ -1,0 +1,25 @@
+create table Employee1(
+ID int,
+Ename varchar(10),
+Salary int
+);
+
+INSERT into Employee1 VALUES(1,'A',100),
+(2,'A',100),
+(3,'B',200),
+(4,'C',300),
+(5,'B',200),
+(6,'C',300);
+
+SELECT * FROM Employee1;
+
+CREATE Table Employee1_copy As
+Select * from  Employee1
+where 1=2;
+
+DESCRIBE Employee1;
+## finding alternate records
+SELECT * from Employee1 
+WHERE ID%2=0;
+SELECT * from Employee1 
+WHERE ID%2=1;
