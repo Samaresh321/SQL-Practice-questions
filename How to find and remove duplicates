@@ -1,0 +1,33 @@
+How to find and remove duplicates ? 
+
+create table Employee(
+Ename varchar(10),
+Salary int
+
+);
+
+DESCRIBE Employee;
+
+INSERT into Employee VALUES('A',100),
+('A',100),
+('A',100),
+('B',200),
+('C',300),
+('B',200),
+('C',300);
+
+SELECT * from Employee;
+
+SELECT Ename,count(Ename) as COUNT 
+FROM Employee
+GROUP BY Ename
+HAVING COUNT(Ename)>1;
+SELECT Salary,count(Salary) as COUNT 
+FROM Employee
+GROUP BY Salary
+HAVING COUNT(Salary)>1;
+
+With cte AS(SELECT Ename,Salary,ROW_NUMBER() OVER(PARTITION BY Ename ) as Row_num
+FROM Employee)
+
+DELETE * FROM cte WHERE Row_num > 1;
